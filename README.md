@@ -1,8 +1,15 @@
 # 🏗 scaffold-eth
 
-> is everything you need to get started building decentralized applications on Ethereum! 🚀 
+> is everything you need to get started building decentralized applications on Ethereum! 🚀
 
 ---
+
+```
+yarn displace <PACKAGE_NAME>
+```
+Run the above command to test pulling the `eth-hooks` package to edit directly inside scaffold-eth.
+
+Note: this will only work with the eth-hooks package at the moment.
 
 
 #### [ 🏃‍♀️ Quick Start ](https://github.com/austintgriffith/scaffold-eth#%EF%B8%8F-quick-start)
