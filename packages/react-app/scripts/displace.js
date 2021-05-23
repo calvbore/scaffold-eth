@@ -33,10 +33,28 @@ if (packageSource[packageName]) {
     console.log(`Displacing ${packageName}...`);
 
     try {
+
       execSync(
         `git submodule add ${packageSource[packageName]} packages/${packageName}`,
         { stdio: 'inherit' }
       );
+      process.chdir(cwd + `/packages/${packageName}`);
+      console.log(process.cwd());
+      execSync(
+        `yarn build`,
+        { stdio: 'inherit' }
+      );
+      execSync(
+        `yarn link`,
+        { stdio: 'inherit' }
+      );
+      process.chdir(cwd + `/packages/react-app`);
+      console.log(process.cwd());
+      execSync(
+        `yarn link ${packageName}`,
+        { stdio: 'inherit' }
+      );
+
     } catch (error) {
       console.log(error);
       process.exit(1)
