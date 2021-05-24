@@ -1,0 +1,3 @@
+[submodule "packages/eth-hooks"]
+	path = packages/eth-hooks
+	url = https://github.com/austintgriffith/eth-hooks.git
