@@ -27,7 +27,7 @@ yarn chain
 ```bash
 cd scaffold-eth
 yarn deploy
-
+```
 
 # 🏗 scaffold-eth
 
