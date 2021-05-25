@@ -1,6 +1,37 @@
+```bash
+git clone --recurse-submodules -b eth-hooks-submodule https://github.com/calvbore/scaffold-eth.git
+```
+
+```bash
+
+yarn install
+
+```
+
+```bash
+
+yarn start
+
+```
+
+> in a second terminal window:
+
+```bash
+cd scaffold-eth
+yarn chain
+
+```
+
+> in a third terminal window:
+
+```bash
+cd scaffold-eth
+yarn deploy
+
+
 # 🏗 scaffold-eth
 
-> is everything you need to get started building decentralized applications on Ethereum! 🚀 
+> is everything you need to get started building decentralized applications on Ethereum! 🚀
 
 ---
 
