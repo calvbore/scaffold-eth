@@ -29,6 +29,12 @@ cd scaffold-eth
 yarn deploy
 ```
 
+> After any edits in the eth-hooks package workspace
+
+```bash
+yarn build-hooks
+```
+
 # 🏗 scaffold-eth
 
 > is everything you need to get started building decentralized applications on Ethereum! 🚀
