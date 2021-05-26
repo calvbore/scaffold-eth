@@ -3,7 +3,6 @@ import { formatEther, parseEther } from "@ethersproject/units";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { Alert, Button, Col, Menu, Row } from "antd";
 import "antd/dist/antd.css";
-import { useUserAddress } from "eth-hooks";
 import React, { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
@@ -13,15 +12,16 @@ import { DAI_ABI, DAI_ADDRESS, INFURA_ID, NETWORK, NETWORKS } from "./constants"
 import { Transactor } from "./helpers";
 import {
   useBalance,
-  useContractLoader,
-  useContractReader,
+  useContractLoader as useExternalContractLoader,
+  useLocalContractsReader as useContractReader,
   useEventListener,
   useExchangePrice,
-  useExternalContractLoader,
   useGasPrice,
   useOnBlock,
+  useUserAddress,
   useUserProvider,
-} from "./hooks";
+} from "eth-hooks";
+import { useContractLoader } from "./hooks";
 // import Hints from "./Hints";
 import { ExampleUI, Hints, Subgraph } from "./views";
 /*
@@ -145,11 +145,17 @@ function App(props) {
     "0x34aA3F359A9D614239015126635CE7732c18fDF3",
   ]);
 
+  const yourContract = useExternalContractLoader(
+    userProvider,
+    require("./contracts/YourContract.address"),
+    require("./contracts/YourContract.abi")
+  );
+
   // keep track of a variable from the contract in the local React state:
   const purpose = useContractReader(readContracts, "YourContract", "purpose");
 
   // 📟 Listen for broadcast events
-  const setPurposeEvents = useEventListener(readContracts, "YourContract", "SetPurpose", localProvider, 1);
+  const setPurposeEvents = useEventListener(yourContract, "SetPurpose", localProvider, 1);
 
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
