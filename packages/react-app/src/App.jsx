@@ -125,7 +125,7 @@ const contractList = require("./contracts/hardhat_contracts.json");
 const externalContractList = require("./contracts/external_contracts.js");
 
 const contractsConfig = {
-  hardhatContracts: contractList,
+  deployedContracts: contractList,
   externalContracts: externalContractList
 }
 
@@ -192,11 +192,8 @@ function App(props) {
   // If you want to make 🔐 write transactions to your contracts, use the userSigner:
   const writeContracts = useContractLoader(
     userSigner,
-    {
-      chainId: localChainId,
-      hardhatContracts: contractsConfig.hardhatContracts,
-      externalContracts: contractsConfig.externalContracts
-    }
+    contractsConfig,
+    localChainId
 );
 
   // EXTERNAL CONTRACT EXAMPLE:
