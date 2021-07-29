@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import { Contract } from "@ethersproject/contracts";
 import { Web3Provider, JsonRpcProvider } from "@ethersproject/providers";
@@ -130,7 +129,7 @@ export default function useContractLoader(
     return () => {
       active = false;
     };
-  }, [providerOrSigner, config.chainId, config.hardhatNetworkName]);
+  }, [providerOrSigner, config.chainId, config.hardhatNetworkName, customAddressKeys, customAddressValues]);
 
   return contracts;
 }

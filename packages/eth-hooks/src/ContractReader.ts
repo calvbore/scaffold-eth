@@ -44,6 +44,7 @@ export default function useContractReader(
           console.log("contractName", contractName, "functionName", functionName, "args", args, "RESULT:", newValue);
       } else {
         newValue = await contracts[contractName][functionName]();
+        setTried(true);
       }
       if (formatter && typeof formatter === "function") {
         newValue = formatter(newValue);
@@ -62,7 +63,7 @@ export default function useContractReader(
     contracts && contracts[contractName] && contracts[contractName].provider,
     () => {
     if (contracts && contracts[contractName] && adjustPollTime === 0) {
-      updateValue()
+      updateValue();
     }
   })
 
